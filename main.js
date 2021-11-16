@@ -1,3 +1,5 @@
+
+
 const ctx = document.getElementById('LineChart').getContext('2d');
 const lineChart = new Chart(ctx, {
     type: 'line',
