@@ -81,7 +81,9 @@
     <section id="verkauf pro region">
         <h3>Verkauf pro Region in den USA</h3>
         <hr>
-        <p>Länderkarte, welche anzeigt, wo wie viele Avocados verkauft werden.</p>
+        <p>Länderkarte, welche anzeigt, wo wie viele Avocados verkauft werden. Welches Jahr interessiert dich?</p>
+        <input type="range" value="2018" name="year" min="2015" max="2018" oninput="this.nextElementSibling.value = this.value" style="width:40%;">
+        <output style="color:white;margin-left:20px;font-size;16px;">2018</output>
     </section>
 
 <!---Subsection: Verkauf pro Region-----------------------------------> 
@@ -89,6 +91,7 @@
         <h3>Menge der verkauften Avocados im Verlauf der Zeit</h3>
         <hr>
         <p>Grafik, welche die Mengenveränderung in den letzten Jahren anzeigt.</p>
+        <input type="number" min="2015" max="2018" step="1" value="2018" style="width:100px;height:20px;text-align:center;"/>
     </section>
     
 <!---HACKS-----------------------------------> 
