@@ -8,6 +8,7 @@
         <meta name="date" content="2019-01-08T017:00:00">
         <meta name="description" content="Avotastic">
         <meta name="keywords" content="Avocado, statistics">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Avotastic</title>
         
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
@@ -63,9 +64,19 @@
     <section id="preisentwicklung">
         <h3>Preisentwicklung von Avocados</h3>
         <hr>
-        <p>Grafik zur Preisentwicklung.</p>
+        <div style="width:80%;margin:auto;">
+            <canvas id="LineChart"  ></canvas>
+            <table id="mytable"></table>
+        </div>
     </section>
+    <script>
+        $.get('data.json', function (result){
+            for (let row of result) {
+                $('<tr><td>${row.name}</td><td>${row.year}</td></tr>').appendTo('#mytable')
+            }
+        });
 
+    </script>
 <!---Subsection: Verkauf pro Region-----------------------------------> 
     <section id="verkauf pro region">
         <h3>Verkauf pro Region in den USA</h3>
@@ -105,5 +116,10 @@
         &copy; Avotastic 2021 | Amgwerd Lorena, Bigler Carole &amp; Gretener Andrea | DBM19VZ
         </p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="main.js"></script>
+
     </body>
 </html>
