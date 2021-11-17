@@ -10,7 +10,7 @@ h2 {font-size: 24pt;margin-bottom: 12px;padding-top: 8%; color: whitesmoke; }
 h3 {font-size: 18pt; color: whitesmoke;}
 h4 {font-size: 16pt;}
 
-p {font-family: 'Inria Serif', serif; font-size: 14pt; margin: 50px; margin-left: 25%; margin-right: 25%; color: whitesmoke;}
+p, ol {font-family: 'Inria Serif', serif; font-size: 14pt; margin: 50px; margin-left: 25%; margin-right: 25%; color: whitesmoke;}
 
 hr {width: 280px; height: 3px; border: 0; margin: 0 auto 40px auto;background: #494949;}
 
