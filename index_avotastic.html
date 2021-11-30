@@ -9,11 +9,21 @@
         <meta name="description" content="Avotastic">
         <meta name="keywords" content="Avocado, statistics">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Avotastic</title>
-        
+        <title>Avotastic</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Inria+Serif&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Inria+Serif|Open+Sans:600&display=swap" rel="stylesheet">
+        <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+        <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     </head>
     <body>
         
@@ -24,9 +34,8 @@
                 <ul>
                 <li>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about avocados">About Avocados</a></li>
                     <li><a href="#preisentwicklung">Preisentwicklung</a></li>
-                    <li><a href="#verkauf pro region">Verkauf pro Region</a></li>   
+                    <li><a href="#verkauf pro region">Verkauf pro Region</a></li>
                     <li><a href="#verkaufte avocados">Verkauf nach Menge</a></li>
                     <li><a href="#hacks">Hacks</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -48,26 +57,18 @@
         <hr>
         <p>Ziel dabei ist es, dass Nutzer die unterschiedlichen Daten vereinfacht lesen und verstehen können. Je nach Aufwand kann sich das Projektteam gut vorstellen, die Webapplikation mit weiteren Kategorien wie «good to know», «Hacks» und «Rezepte» zu ergänzen.</p>
         </div>
-        <a href="#about avocados">
+        <a href="#preisentwicklung">
                 <img src="img/pfeil.png" alt="pfeil">
             </a>
-    </section> 
-    
-<!---ABOUT AVOCADOS-----------------------------------> 
-    <section id="about avocados">
-        <h2>About Avocados</h2>
-        <hr>
-        <p>Die Avocado ist eine sehr beeindruckende Frucht, gehört zur Beerenfamilie und ist die beliebteste Frucht in Amerika. Die Avocadoindustrie boomt und besonders die Millennials verspeisen diese Frucht in grossen Mengen. Sei es als Avocado Toast, Smoothie oder auf traditionelle Art als Guacamole.</p>
     </section>
         
-<!---Subsection: Preisentwicklung-----------------------------------> 
+<!---Subsection: Preisentwicklung----------------------------------->
     <section id="preisentwicklung">
         <h3>Preisentwicklung von Avocados</h3>
         <hr>
-        <div style="width:80%;margin:auto;">
-            <canvas id="LineChart"  ></canvas>
-            <table id="mytable"></table>
-        </div>
+        <figure class="highcharts-figure">
+            <div id="preisentwicklung-chart" class="static-box"></div>
+        </figure>
     </section>
     <!--<script>
         $.get('data.json', function (result){
@@ -84,6 +85,7 @@
         <p>Länderkarte, welche anzeigt, wo wie viele Avocados verkauft werden. Welches Jahr interessiert dich?</p>
         <input type="range" value="2018" name="year" min="2015" max="2018" oninput="this.nextElementSibling.value = this.value" style="width:40%;">
         <output style="color:white;margin-left:20px;font-size;16px;">2018</output>
+        <div id="region" class="static-box"></div>
     </section>
 
 <!---Subsection: Verkauf pro Region-----------------------------------> 
@@ -92,6 +94,10 @@
         <hr>
         <p>Grafik, welche die Mengenveränderung in den letzten Jahren anzeigt.</p>
         <input type="number" min="2015" max="2018" step="1" value="2018" style="width:100px;height:20px;text-align:center;"/>
+        <figure class="highcharts-figure">
+            <div id="menge" class="static-box"></div>
+
+        </figure>
     </section>
     
 <!---HACKS-----------------------------------> 
@@ -154,6 +160,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="main.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+
+<div id="container"></div>
 
     </body>
 </html>
