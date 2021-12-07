@@ -1,5 +1,6 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, jsonify, render_template
 from csvdata import *
+
 app = Flask(__name__)
 
 data = datareader
