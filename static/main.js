@@ -1,4 +1,9 @@
 
+$.get('data', function(result) {
+console.log(result)
+})
+
+
 // Static 1: PREISENTWICKLUNG VON AVOCADOS
 
 Highcharts.chart('preisentwicklung-chart', {
@@ -60,7 +65,59 @@ Highcharts.chart('preisentwicklung-chart', {
 });
 
 // Static 2: VERKAUF PRO REGION IN DEN USA
-Highcharts.getJSON('https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/us-population-density.json', function (data) {
+
+Highcharts.mapChart('region', {
+
+        chart: {
+            map: 'countries/us/us-all',
+            borderWidth: 1
+        },
+        title: {
+            text: 'Menge der verkauften Avocados (in Tausend)'
+        },
+        exporting: {
+            sourceWidth: 600,
+            sourceHeight: 500
+        },
+        mapNavigation: {
+            enabled: true
+        },
+        colorAxis: {
+            min: 1,
+            type: 'logarithmic',
+            minColor: '#edfded',
+            maxColor: '#006400',
+            stops: [
+                [0, '#edfded'],
+                [0.67, '#7ef17e'],
+                [1, '#006400']
+            ]
+        },
+        series: [{
+            data: [{
+                "value": 438,
+                "code": "NJ"
+            },
+            {
+                "value": 387.35,
+                "code": "RI"
+            },
+            ],
+            joinBy: ['postal-code', 'code'],
+            tooltip: {
+                pointFormat: '{point.code}: {point.value}/km²'
+            },
+            dataLabels: {
+                enabled: true,
+                color: '#FFFFFF',
+                format: '{point.code}'
+            },
+            name: 'Menge der verkauften Avocados',
+
+        }]
+ })
+
+/*Highcharts.getJSON('https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/us-population-density.json', function (data) {
 
     // Make codes uppercase to match the map data
     data.forEach(function (p) {
@@ -126,7 +183,7 @@ Highcharts.getJSON('https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/sam
             }
         }]
     });
-});
+});*/
 
 // Static 3: MENGE DER VERKAUFTEN AVOCADOS IM VERLAUF DER ZEIT
 Highcharts.chart('menge', {

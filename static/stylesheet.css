@@ -1,4 +1,4 @@
-html, body {margin: 0;padding: 0;height: 100%;text-align: center; background-image: url(../img/avo-background.jpg); background-color: #cccccc;}
+html, body {margin: 0;padding: 0;height: 100%;text-align: center; background-image: url(img/avo-background.jpg); background-color: #cccccc;}
 section {min-height: 100%;}
 a {text-decoration: none;}
 li {list-style-type: none;}
