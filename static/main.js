@@ -1,7 +1,4 @@
 
-$.get('data', function(result) {
-console.log(result)
-})
 
 
 // Static 1: PREISENTWICKLUNG VON AVOCADOS
@@ -65,6 +62,20 @@ Highcharts.chart('preisentwicklung-chart', {
 });
 
 // Static 2: VERKAUF PRO REGION IN DEN USA
+
+$.get('data', function(result) {
+    const resultSliced = result.slice(0,5);
+    let stueck = 0
+    resultSliced.forEach((e) => {
+        //console.log(e);
+        if (e['region'] == 'Albany', e['year'] == '2015') {
+            stueck = stueck += parseInt(e['Total Volume']);
+        }
+        //console.log(stueck)
+        console.log(e['region'] + ' '+ parseInt(e['Total Volume']) + ' '+ parseInt(e['year']));
+    });
+    console.log(parseInt(stueck))
+});
 
 Highcharts.mapChart('region', {
 
@@ -186,6 +197,48 @@ Highcharts.mapChart('region', {
 });*/
 
 // Static 3: MENGE DER VERKAUFTEN AVOCADOS IM VERLAUF DER ZEIT
+
+$.get('data', function(result) {
+    const resultSliced = result.slice();
+    let conventional15 = 0
+    let organic15 = 0
+    let conventional16 = 0
+    let organic16 = 0
+    let conventional17 = 0
+    let organic17 = 0
+    let conventional18 = 0
+    let organic18 = 0
+    resultSliced.forEach((e) => {
+        //console.log(e);
+        if (e['type'] == 'organic' && e['year'] == '2015') {
+            organic15 = organic15 += parseInt(e['Total Volume']);
+        } else if (e['type'] == 'conventional' && e['year'] == '2015'){
+            conventional15 = conventional15 += parseInt(e['Total Volume']);
+        } else if (e['type'] == 'conventional' && e['year'] == '2016'){
+            conventional16 = conventional16 += parseInt(e['Total Volume']);
+        } else if (e['type'] == 'organic' && e['year'] == '2016') {
+            organic16 = organic16 += parseInt(e['Total Volume']);
+        } else if (e['type'] == 'conventional' && e['year'] == '2017'){
+            conventional17 = conventional17 += parseInt(e['Total Volume']);
+        } else if (e['type'] == 'organic' && e['year'] == '2017') {
+            organic17 = organic17 += parseInt(e['Total Volume']);
+        } else if (e['type'] == 'conventional' && e['year'] == '2018'){
+            conventional18 = conventional18 += parseInt(e['Total Volume']);
+        } else if (e['type'] == 'organic' && e['year'] == '2018') {
+            organic18 = organic18 += parseInt(e['Total Volume']);
+        }
+        //console.log(e['type'] + ' '+ parseInt(e['Total Volume']) + ' '+ parseInt(e['year']));
+    });
+    console.log('Conventional 2015: ' + conventional15)
+    console.log('Organic 2015: ' + organic15)
+    console.log('Conventional 2016: ' + conventional16)
+    console.log('Organic 2016: ' + organic16)
+    console.log('Conventional 2017: ' + conventional17)
+    console.log('Organic 2017: ' + organic17)
+    console.log('Conventional 2018: ' + conventional18)
+    console.log('Organic 2018: ' + organic18)
+
+
 Highcharts.chart('menge', {
     chart: {
         type: 'column'
@@ -238,9 +291,10 @@ Highcharts.chart('menge', {
     },
     series: [{
         name: 'Conventional',
-        data: [5, 3, 4, 7]
+        data: [conventional15, conventional16, conventional17, conventional18]
     }, {
         name: 'Organic',
-        data: [2, 2, 3, 2]
+        data: [organic15, organic16, organic17, organic18]
     }]
+});
 });
