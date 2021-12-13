@@ -7,26 +7,26 @@ $.get("data", function (result) {
   const getAllPrices = (year, type) =>
     result
       .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
-      .map((e) => e["AveragePrice"])
-      //.reduce((sum, newValue, e) => sum + parseFloat(newValue)/e.length, 0);
+      .map((e) => parseFloat(e["AveragePrice"]))
+      .reduce((sum, newValue, e) => sum + parseFloat(newValue), 0);
 
-  const PRconventional15 = getAllPrices(2015, "conventional");
-  const PRorganic15 = getAllPrices(2015, "organic");
-  const PRconventional16 = getAllPrices(2016, "conventional");
-  const PRorganic16 = getAllPrices(2016, "organic");
-  const PRconventional17 = getAllPrices(2017, "conventional");
-  const PRorganic17 = getAllPrices(2017, "organic");
-  const PRconventional18 = getAllPrices(2018, "conventional");
-  const PRorganic18 = getAllPrices(2018, "organic");
+  const PRconventional15 = (getAllPrices(2015, "conventional"))/2756;
+  const PRorganic15 = (getAllPrices(2015, "organic"))/2755;
+  const PRconventional16 = (getAllPrices(2016, "conventional"))/2756;
+  const PRorganic16 = (getAllPrices(2016, "organic"))/2756;
+  const PRconventional17 = (getAllPrices(2017, "conventional"))/2809;
+  const PRorganic17 = (getAllPrices(2017, "organic"))/2807;
+  const PRconventional18 = (getAllPrices(2018, "conventional"))/636;
+  const PRorganic18 = (getAllPrices(2018, "organic"))/636;
 
 console.log(PRconventional15)
-console.log(PRorganic15.length)
-console.log(PRconventional16.length)
-console.log(PRorganic16.length)
-console.log(PRconventional17.length)
-console.log(PRorganic17.length)
-console.log(PRconventional18.length)
-console.log(PRorganic18.length)
+console.log(PRorganic15)
+console.log(PRconventional16)
+console.log(PRorganic16)
+console.log(PRconventional17)
+console.log(PRorganic17)
+console.log(PRconventional18)
+console.log(PRorganic18)
 
 Highcharts.chart('preisentwicklung-chart', {
 
