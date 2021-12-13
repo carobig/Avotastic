@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template
 import csv
 
 #SERVER
-filename = 'data/Avocado_v5.csv'
+filename = 'data/Avocado_v6.csv'
 
 with open(filename, 'r') as csvfile:
     datareader = csv.DictReader(csvfile, delimiter=';')

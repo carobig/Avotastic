@@ -3,6 +3,31 @@
 
 // Static 1: PREISENTWICKLUNG VON AVOCADOS
 
+$.get("data", function (result) {
+  const getAllPrices = (year, type) =>
+    result
+      .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
+      .map((e) => e["AveragePrice"])
+      //.reduce((sum, newValue, e) => sum + parseFloat(newValue)/e.length, 0);
+
+  const PRconventional15 = getAllPrices(2015, "conventional");
+  const PRorganic15 = getAllPrices(2015, "organic");
+  const PRconventional16 = getAllPrices(2016, "conventional");
+  const PRorganic16 = getAllPrices(2016, "organic");
+  const PRconventional17 = getAllPrices(2017, "conventional");
+  const PRorganic17 = getAllPrices(2017, "organic");
+  const PRconventional18 = getAllPrices(2018, "conventional");
+  const PRorganic18 = getAllPrices(2018, "organic");
+
+console.log(PRconventional15)
+console.log(PRorganic15.length)
+console.log(PRconventional16.length)
+console.log(PRorganic16.length)
+console.log(PRconventional17.length)
+console.log(PRorganic17.length)
+console.log(PRconventional18.length)
+console.log(PRorganic18.length)
+
 Highcharts.chart('preisentwicklung-chart', {
 
     title: {
@@ -38,10 +63,10 @@ Highcharts.chart('preisentwicklung-chart', {
 
     series: [{
         name: 'Convetional',
-        data: [43934, 52503, 57177, 69658]
+        data: [PRconventional15, PRconventional16, PRconventional17, PRconventional18]
     }, {
         name: 'Organic',
-        data: [24916, 24064, 29742, 29851]
+        data: [PRorganic15, PRorganic16, PRorganic17, PRorganic18]
     }],
 
     responsive: {
@@ -60,22 +85,48 @@ Highcharts.chart('preisentwicklung-chart', {
     }
 
 });
+});
 
 // Static 2: VERKAUF PRO REGION IN DEN USA
 
-$.get('data', function(result) {
-    const resultSliced = result.slice(0,5);
-    let stueck = 0
-    resultSliced.forEach((e) => {
-        //console.log(e);
-        if (e['region'] == 'Albany', e['year'] == '2015') {
-            stueck = stueck += parseInt(e['Total Volume']);
-        }
-        //console.log(stueck)
-        console.log(e['region'] + ' '+ parseInt(e['Total Volume']) + ' '+ parseInt(e['year']));
-    });
-    console.log(parseInt(stueck))
-});
+$.get("data", function (result) {
+  const getAllVolumesByState = (Kuerzel) =>
+    result
+      .filter((e) => e.Kuerzel === Kuerzel)
+      .map((e) => e["Total Volume"])
+      .reduce((sum, newValue) => sum + parseInt(newValue), 0);
+
+  const AK = (getAllVolumesByState("AK"))/1000;
+  const AL = (getAllVolumesByState("AL"))/1000;
+  const AZ = (getAllVolumesByState("AZ"))/1000;
+  const CA = (getAllVolumesByState("CA"))/1000;
+  const CO = (getAllVolumesByState("CO"))/1000;
+  const CT = (getAllVolumesByState("CT"))/1000;
+  const FL = (getAllVolumesByState("FL"))/1000;
+  const GA = (getAllVolumesByState("GA"))/1000;
+  const ID = (getAllVolumesByState("ID"))/1000;
+  const IL = (getAllVolumesByState("IL"))/1000;
+  const IN = (getAllVolumesByState("IN"))/1000;
+  const KY = (getAllVolumesByState("KY"))/1000;
+  const LA = (getAllVolumesByState("LA"))/1000;
+  const MA = (getAllVolumesByState("MA"))/1000;
+  const MD = (getAllVolumesByState("MD"))/1000;
+  const ME = (getAllVolumesByState("ME"))/1000;
+  const MI = (getAllVolumesByState("MI"))/1000;
+  const MO = (getAllVolumesByState("MO"))/1000;
+  const MS = (getAllVolumesByState("MS"))/1000;
+  const NC = (getAllVolumesByState("NC"))/1000;
+  const NM = (getAllVolumesByState("NM"))/1000;
+  const NV = (getAllVolumesByState("NV"))/1000;
+  const NY = (getAllVolumesByState("NY"))/1000;
+  const OH = (getAllVolumesByState("OH"))/1000;
+  const OR = (getAllVolumesByState("OR"))/1000;
+  const PA = (getAllVolumesByState("PA"))/1000;
+  const SC = (getAllVolumesByState("SC"))/1000;
+  const TN = (getAllVolumesByState("TN"))/1000;
+  const TX = (getAllVolumesByState("TX"))/1000;
+  const VA = (getAllVolumesByState("VA"))/1000;
+  const WA = (getAllVolumesByState("WA"))/1000;
 
 Highcharts.mapChart('region', {
 
@@ -100,19 +151,22 @@ Highcharts.mapChart('region', {
             maxColor: '#006400',
             stops: [
                 [0, '#edfded'],
-                [250, '#7ef17e'],
-                [500, '#006400']
+                [5000000, '#7ef17e'],
+                [10000000, '#006400']
             ]
         },
         series: [{
             data: [{
-                "value": 438,
-                "code": "FL"
-            },
-            {
-                "value": 387.35,
-                "code": "RI"
-            },
+                "value": FL,"code": "FL"},{
+                "value": NY,"code": "NY"},{
+                "value": AK,"code": "AK"},{
+                "value": AL,"code": "AL"},{
+                "value": AZ,"code": "AZ"},{
+                "value": CA,"code": "CA"},{
+                "value": CO,"code": "CO"},{
+                "value": CT,"code": "CT"},{
+                "value": FL,"code": "FL"},{
+                "value": GA,"code": "GA"},
             ],
             joinBy: ['postal-code', 'code'],
             tooltip: {
@@ -127,51 +181,29 @@ Highcharts.mapChart('region', {
 
         }]
  })
-
+});
 
 
 // Static 3: MENGE DER VERKAUFTEN AVOCADOS IM VERLAUF DER ZEIT
 
 //Berechnungen
-$.get('data', function(result) {
-    const resultSliced = result.slice();
-    let conventional15 = 0
-    let organic15 = 0
-    let conventional16 = 0
-    let organic16 = 0
-    let conventional17 = 0
-    let organic17 = 0
-    let conventional18 = 0
-    let organic18 = 0
-    resultSliced.forEach((e) => {
-        //console.log(e);
-        if (e['type'] == 'organic' && e['year'] == '2015') {
-            organic15 = organic15 += parseInt(e['Total Volume']);
-        } else if (e['type'] == 'conventional' && e['year'] == '2015'){
-            conventional15 = conventional15 += parseInt(e['Total Volume']);
-        } else if (e['type'] == 'conventional' && e['year'] == '2016'){
-            conventional16 = conventional16 += parseInt(e['Total Volume']);
-        } else if (e['type'] == 'organic' && e['year'] == '2016') {
-            organic16 = organic16 += parseInt(e['Total Volume']);
-        } else if (e['type'] == 'conventional' && e['year'] == '2017'){
-            conventional17 = conventional17 += parseInt(e['Total Volume']);
-        } else if (e['type'] == 'organic' && e['year'] == '2017') {
-            organic17 = organic17 += parseInt(e['Total Volume']);
-        } else if (e['type'] == 'conventional' && e['year'] == '2018'){
-            conventional18 = conventional18 += parseInt(e['Total Volume']);
-        } else if (e['type'] == 'organic' && e['year'] == '2018') {
-            organic18 = organic18 += parseInt(e['Total Volume']);
-        }
-        //console.log(e['type'] + ' '+ parseInt(e['Total Volume']) + ' '+ parseInt(e['year']));
-    });
-    console.log('Conventional 2015: ' + conventional15)
-    console.log('Organic 2015: ' + organic15)
-    console.log('Conventional 2016: ' + conventional16)
-    console.log('Organic 2016: ' + organic16)
-    console.log('Conventional 2017: ' + conventional17)
-    console.log('Organic 2017: ' + organic17)
-    console.log('Conventional 2018: ' + conventional18)
-    console.log('Organic 2018: ' + organic18)
+
+$.get("data", function (result) {
+  const getAllVolumes = (year, type) =>
+    result
+      .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
+      .map((e) => e["Total Volume"])
+      .reduce((sum, newValue) => sum + parseInt(newValue), 0);
+
+  const conventional15 = getAllVolumes(2015, "conventional");
+  const organic15 = getAllVolumes(2015, "organic");
+  const conventional16 = getAllVolumes(2016, "conventional");
+  const organic16 = getAllVolumes(2016, "organic");
+  const conventional17 = getAllVolumes(2017, "conventional");
+  const organic17 = getAllVolumes(2017, "organic");
+  const conventional18 = getAllVolumes(2018, "conventional");
+  const organic18 = getAllVolumes(2018, "organic");
+
 
 //Chart-Template
 Highcharts.chart('menge', {
@@ -229,7 +261,8 @@ Highcharts.chart('menge', {
         data: [conventional15, conventional16, conventional17, conventional18]
     }, {
         name: 'Organic',
-        data: [organic15, organic16, organic17, organic18]
-    }]
-});
+        data: [organic15, organic16, organic17, organic18],
+    },
+    ],
+   });
 });
