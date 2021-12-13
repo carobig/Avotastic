@@ -19,14 +19,14 @@ $.get("data", function (result) {
   const PRconventional18 = (getAllPrices(2018, "conventional"))/636;
   const PRorganic18 = (getAllPrices(2018, "organic"))/636;
 
-console.log(PRconventional15)
-console.log(PRorganic15)
-console.log(PRconventional16)
-console.log(PRorganic16)
-console.log(PRconventional17)
-console.log(PRorganic17)
-console.log(PRconventional18)
-console.log(PRorganic18)
+//console.log(PRconventional15)
+//console.log(PRorganic15)
+//console.log(PRconventional16)
+//console.log(PRorganic16)
+//console.log(PRconventional17)
+//console.log(PRorganic17)
+//console.log(PRconventional18)
+//console.log(PRorganic18)
 
 Highcharts.chart('preisentwicklung-chart', {
 
@@ -145,14 +145,14 @@ Highcharts.mapChart('region', {
             enabled: true
         },
         colorAxis: {
-            min: 1,
+            min: 1000,
             type: 'logarithmic',
             minColor: '#edfded',
             maxColor: '#006400',
             stops: [
                 [0, '#edfded'],
-                [5000000, '#7ef17e'],
-                [10000000, '#006400']
+                [0.6, '#7ef17e'],
+                [1, '#006400']
             ]
         },
         series: [{
@@ -166,11 +166,33 @@ Highcharts.mapChart('region', {
                 "value": CO,"code": "CO"},{
                 "value": CT,"code": "CT"},{
                 "value": FL,"code": "FL"},{
-                "value": GA,"code": "GA"},
+                "value": GA,"code": "GA"},{
+                "value": ID,"code": "ID"},{
+                "value": IL,"code": "IL"},{
+                "value": IN,"code": "IN"},{
+                "value": KY,"code": "KY"},{
+                "value": LA,"code": "LA"},{
+                "value": MA,"code": "MA"},{
+                "value": MD,"code": "MD"},{
+                "value": ME,"code": "ME"},{
+                "value": MI,"code": "MI"},{
+                "value": MO,"code": "MO"},{
+                "value": MS,"code": "MS"},{
+                "value": NC,"code": "NC"},{
+                "value": NV,"code": "NV"},{
+                "value": NY,"code": "NY"},{
+                "value": OH,"code": "OH"},{
+                "value": OR,"code": "OR"},{
+                "value": PA,"code": "PA"},{
+                "value": SC,"code": "SC"},{
+                "value": TN,"code": "TN"},{
+                "value": TX,"code": "TX"},{
+                "value": VA,"code": "VA"},{
+                "value": WA,"code": "WA"},
             ],
             joinBy: ['postal-code', 'code'],
             tooltip: {
-                pointFormat: '{point.code}: {point.value}/km²'
+                pointFormat: '{point.code}: {point.value}'
             },
             dataLabels: {
                 enabled: true,

@@ -7,7 +7,7 @@ filename = 'data/Avocado_v6.csv'
 with open(filename, 'r') as csvfile:
     datareader = csv.DictReader(csvfile, delimiter=';')
     data = list(datareader)
-    print(data)
+    #print(data)
 
 
 app = Flask(__name__)
