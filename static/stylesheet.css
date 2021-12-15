@@ -1,3 +1,4 @@
+/*  Quelle IMG Background: https://unsplash.com/photos/4L0KvF123mM */
 html, body {margin: 0;padding: 0;height: 100%;text-align: center; background-image: url(img/avo-background.jpg); background-color: #cccccc;}
 section {min-height: 100%;}
 a {text-decoration: none;}
