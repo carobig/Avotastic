@@ -8,7 +8,7 @@ h1, h2, h3, h4, a {font-family: 'Open Sans', sans-serif;font-weight: 300;text-tr
 h1 {font-size: 38pt;letter-spacing: 0.35em;color: whitesmoke;}
 h2 {font-size: 24pt;margin-bottom: 12px;padding-top: 8%; color: whitesmoke; }
 h3 {font-size: 18pt; color: whitesmoke;}
-h4 {font-size: 16pt;}
+h4 {font-size: 16pt;color: whitesmoke;}
 
 p, ol {font-family: 'Inria Serif', serif; font-size: 14pt; margin: 50px; margin-left: 25%; margin-right: 25%; color: whitesmoke;}
 
@@ -40,14 +40,14 @@ header nav ul li:hover {opacity: 0,5;}
 
 /*Stats***********************************/
 
-.static-box {width:80%;margin:auto;magrin-top:20px;height:500px;}
+.static-box {width:600px;margin:auto;magrin-top:0px;height:auto;}
 
-#preisentwicklung-chart {height: 500px;}
+#preisentwicklung-chart {height: auto;}
 
-#region {height: 500px;margin: 0 auto;}
+#region {height: 500px;margin: 0 auto; width:80%;}
 .loading {margin-top: 10em;text-align: center;color: gray;}
 
-#menge {height: 500px;}
+#menge {height: auto;}
 .highcharts-figure, .highcharts-data-table table {margin: 1em auto;}
 .highcharts-data-table table {font-family: Verdana, sans-serif;border-collapse: collapse;border: 1px solid #ebebeb;margin: 10px auto;text-align: center;width: 100%;}
 .highcharts-data-table caption {padding: 1em 0;font-size: 1.2em;color: #555;}

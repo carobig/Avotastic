@@ -1,14 +1,18 @@
-
+// FRAGEN:
+// Beschriftung der Range Description Graph 1 || 8
+// Filter bei Karte einbauen? Wie kann man auch einfach nach Jahr und Typ? || 106
 
 
 // Static 1: PREISENTWICKLUNG VON AVOCADOS
+
+// BERECHNUNG
 
 $.get("data", function (result) {
   const getAllPrices = (year, type) =>
     result
       .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
       .map((e) => parseFloat(e["AveragePrice"]))
-      .reduce((sum, newValue, e) => sum + parseFloat(newValue), 0);
+      .reduce((sum, newValue, e) => sum + parseFloat(newValue), 0)//.then();
 
   const PRconventional15 = (getAllPrices(2015, "conventional"))/2756;
   const PRorganic15 = (getAllPrices(2015, "organic"))/2755;
@@ -42,7 +46,8 @@ Highcharts.chart('preisentwicklung-chart', {
 
     xAxis: {
         accessibility: {
-            rangeDescription: 'Range: 2015 to 2018'
+            rangeDescription: 'Range: 2015 to 2018',
+            categories: ['2015', '2016', '2017', '2018']
         }
     },
 
@@ -89,6 +94,8 @@ Highcharts.chart('preisentwicklung-chart', {
 
 // Static 2: VERKAUF PRO REGION IN DEN USA
 
+//BERECHNUNG
+
 $.get("data", function (result) {
   const getAllVolumesByState = (Kuerzel) =>
     result
@@ -96,6 +103,7 @@ $.get("data", function (result) {
       .map((e) => e["Total Volume"])
       .reduce((sum, newValue) => sum + parseInt(newValue), 0);
 
+// Alle Jahre, wie in einzelne Jahre aufteilen? Wie filter ermöglichen?
   const AK = (getAllVolumesByState("AK"))/1000;
   const AL = (getAllVolumesByState("AL"))/1000;
   const AZ = (getAllVolumesByState("AZ"))/1000;
