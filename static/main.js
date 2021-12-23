@@ -1,5 +1,5 @@
 // FRAGEN:
-// Beschriftung der Range Description Graph 1 || 8
+//
 // Filter bei Karte einbauen? Wie kann man auch einfach nach Jahr und Typ? || 106
 
 
@@ -92,127 +92,6 @@ Highcharts.chart('preisentwicklung-chart', {
 });
 });
 
-// Static 2: VERKAUF PRO REGION IN DEN USA
-
-//BERECHNUNG
-
-$.get("data", function (result) {
-  const getAllVolumesByState = (Kuerzel) =>
-    result
-      .filter((e) => e.Kuerzel === Kuerzel)
-      .map((e) => e["Total Volume"])
-      .reduce((sum, newValue) => sum + parseInt(newValue), 0);
-
-// Alle Jahre, wie in einzelne Jahre aufteilen? Wie filter ermöglichen?
-  const AK = (getAllVolumesByState("AK"))/1000;
-  const AL = (getAllVolumesByState("AL"))/1000;
-  const AZ = (getAllVolumesByState("AZ"))/1000;
-  const CA = (getAllVolumesByState("CA"))/1000;
-  const CO = (getAllVolumesByState("CO"))/1000;
-  const CT = (getAllVolumesByState("CT"))/1000;
-  const FL = (getAllVolumesByState("FL"))/1000;
-  const GA = (getAllVolumesByState("GA"))/1000;
-  const ID = (getAllVolumesByState("ID"))/1000;
-  const IL = (getAllVolumesByState("IL"))/1000;
-  const IN = (getAllVolumesByState("IN"))/1000;
-  const KY = (getAllVolumesByState("KY"))/1000;
-  const LA = (getAllVolumesByState("LA"))/1000;
-  const MA = (getAllVolumesByState("MA"))/1000;
-  const MD = (getAllVolumesByState("MD"))/1000;
-  const ME = (getAllVolumesByState("ME"))/1000;
-  const MI = (getAllVolumesByState("MI"))/1000;
-  const MO = (getAllVolumesByState("MO"))/1000;
-  const MS = (getAllVolumesByState("MS"))/1000;
-  const NC = (getAllVolumesByState("NC"))/1000;
-  const NM = (getAllVolumesByState("NM"))/1000;
-  const NV = (getAllVolumesByState("NV"))/1000;
-  const NY = (getAllVolumesByState("NY"))/1000;
-  const OH = (getAllVolumesByState("OH"))/1000;
-  const OR = (getAllVolumesByState("OR"))/1000;
-  const PA = (getAllVolumesByState("PA"))/1000;
-  const SC = (getAllVolumesByState("SC"))/1000;
-  const TN = (getAllVolumesByState("TN"))/1000;
-  const TX = (getAllVolumesByState("TX"))/1000;
-  const VA = (getAllVolumesByState("VA"))/1000;
-  const WA = (getAllVolumesByState("WA"))/1000;
-
-Highcharts.mapChart('region', {
-
-        chart: {
-            map: 'countries/us/us-all',
-            borderWidth: 1
-        },
-        title: {
-            text: 'Menge der verkauften Avocados (in Tausend)'
-        },
-        exporting: {
-            sourceWidth: 600,
-            sourceHeight: 500
-        },
-        mapNavigation: {
-            enabled: true
-        },
-        colorAxis: {
-            min: 1000,
-            type: 'logarithmic',
-            minColor: '#edfded',
-            maxColor: '#006400',
-            stops: [
-                [0, '#edfded'],
-                [0.6, '#7ef17e'],
-                [1, '#006400']
-            ]
-        },
-        series: [{
-            data: [{
-                "value": FL,"code": "FL"},{
-                "value": NY,"code": "NY"},{
-                "value": AK,"code": "AK"},{
-                "value": AL,"code": "AL"},{
-                "value": AZ,"code": "AZ"},{
-                "value": CA,"code": "CA"},{
-                "value": CO,"code": "CO"},{
-                "value": CT,"code": "CT"},{
-                "value": FL,"code": "FL"},{
-                "value": GA,"code": "GA"},{
-                "value": ID,"code": "ID"},{
-                "value": IL,"code": "IL"},{
-                "value": IN,"code": "IN"},{
-                "value": KY,"code": "KY"},{
-                "value": LA,"code": "LA"},{
-                "value": MA,"code": "MA"},{
-                "value": MD,"code": "MD"},{
-                "value": ME,"code": "ME"},{
-                "value": MI,"code": "MI"},{
-                "value": MO,"code": "MO"},{
-                "value": MS,"code": "MS"},{
-                "value": NC,"code": "NC"},{
-                "value": NV,"code": "NV"},{
-                "value": NY,"code": "NY"},{
-                "value": OH,"code": "OH"},{
-                "value": OR,"code": "OR"},{
-                "value": PA,"code": "PA"},{
-                "value": SC,"code": "SC"},{
-                "value": TN,"code": "TN"},{
-                "value": TX,"code": "TX"},{
-                "value": VA,"code": "VA"},{
-                "value": WA,"code": "WA"},
-            ],
-            joinBy: ['postal-code', 'code'],
-            tooltip: {
-                pointFormat: '{point.code}: {point.value}'
-            },
-            dataLabels: {
-                enabled: true,
-                color: '#FFFFFF',
-                format: '{point.code}'
-            },
-            name: 'Menge der verkauften Avocados',
-
-        }]
- })
-});
-
 
 // Static 3: MENGE DER VERKAUFTEN AVOCADOS IM VERLAUF DER ZEIT
 
@@ -295,4 +174,63 @@ Highcharts.chart('menge', {
     },
     ],
    });
+});
+
+
+//Eventhandler für Slider
+$("#yearslider").on("change", function(){
+    // Jahreszahl von Slider holen
+    let year = $(this).val()
+
+    //Daten für ein bestimmtes Jahr holen - Daten sind dann in result
+    $.get("dataperyear?year=" + year, function(result){
+        //mit den Daten die Map darstellen - result bei Data
+        Highcharts.mapChart('region', {
+
+            chart: {
+                map: 'countries/us/us-all',
+                borderWidth: 1
+            },
+            title: {
+                text: 'Menge der verkauften Avocados (in Tausend)'
+            },
+            exporting: {
+                sourceWidth: 600,
+                sourceHeight: 500
+            },
+            mapNavigation: {
+                enabled: true
+            },
+            colorAxis: {
+                min: 1000,
+                type: 'logarithmic',
+                minColor: '#edfded',
+                maxColor: '#006400',
+                stops: [
+                    [0, '#edfded'],
+                    [0.6, '#7ef17e'],
+                    [1, '#006400']
+                ]
+            },
+            series: [{
+                //hier werden die Daten eingetragen
+                data: result,
+                joinBy: ['postal-code', 'code'],
+                tooltip: {
+                    pointFormat: '{point.code}: {point.value}'
+                },
+                dataLabels: {
+                    enabled: true,
+                    color: '#FFFFFF',
+                    format: '{point.code}'
+                },
+                name: 'Menge der verkauften Avocados',
+
+            }]
+        })
+
+    });
+
+
+    //console.log(year)
 });

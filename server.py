@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
+from collections import defaultdict
 import csv
 
 #SERVER
@@ -21,6 +22,26 @@ def index():
 def dataview():
     return jsonify(data)
 
+@app. route('/dataperyear', methods=['GET'])
+def dataperyear():
+    #Jahr aus dem Request holen
+    year = request.args.get("year")
+
+    #Alle Zeilen für das Jahr holen
+    filtereddata = [row for row in data if row["year"] == year]
+
+    #dictonary erzeugen, volume für jeden Bundesstaat berechnen
+    d = defaultdict(lambda: 0)
+    for row in filtereddata:
+        d[row["Kuerzel"]] += float(row["Total Volume"])
+
+    #Daten aus dictonary in richtiges Format bringen
+    liste = []
+    for code, value in d.items():
+        liste.append({"value":value, "code":code})
+
+    #versenden der Daten
+    return jsonify(liste)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
