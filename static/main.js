@@ -1,9 +1,5 @@
-// FRAGEN:
-//
-// Filter bei Karte einbauen? Wie kann man auch einfach nach Jahr und Typ? || 106
 
-
-// Static 1: PREISENTWICKLUNG VON AVOCADOS
+//PREISENTWICKLUNG VON AVOCADOS
 
 // BERECHNUNG
 
@@ -23,16 +19,7 @@ $.get("data", function (result) {
   const PRconventional18 = (getAllPrices(2018, "conventional"))/636;
   const PRorganic18 = (getAllPrices(2018, "organic"))/636;
 
-//console.log(PRconventional15)
-//console.log(PRorganic15)
-//console.log(PRconventional16)
-//console.log(PRorganic16)
-//console.log(PRconventional17)
-//console.log(PRorganic17)
-//console.log(PRconventional18)
-//console.log(PRorganic18)
-
-Highcharts.chart('preisentwicklung-chart', {
+  Highcharts.chart('preisentwicklung-chart', {
 
     title: {
         text: ' '
@@ -89,11 +76,11 @@ Highcharts.chart('preisentwicklung-chart', {
         }]
     }
 
-});
+  });
 });
 
 
-// Static 3: MENGE DER VERKAUFTEN AVOCADOS IM VERLAUF DER ZEIT
+// VERKAUFSMENGE
 
 //Berechnungen
 
@@ -113,9 +100,8 @@ $.get("data", function (result) {
   const conventional18 = getAllVolumes(2018, "conventional");
   const organic18 = getAllVolumes(2018, "organic");
 
-
-//Chart-Template
-Highcharts.chart('menge', {
+  //Chart-Template
+  Highcharts.chart('menge', {
     chart: {
         type: 'column'
     },
@@ -173,9 +159,11 @@ Highcharts.chart('menge', {
         data: [organic15, organic16, organic17, organic18],
     },
     ],
-   });
+  });
 });
 
+
+//VERKAUF PRO US-BUNDESSTAAT
 
 //Eventhandler für Slider
 $("#yearslider").on("change", function(){

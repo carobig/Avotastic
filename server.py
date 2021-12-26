@@ -33,7 +33,7 @@ def dataperyear():
     #dictonary erzeugen, volume für jeden Bundesstaat berechnen
     d = defaultdict(lambda: 0)
     for row in filtereddata:
-        d[row["Kuerzel"]] += float(row["Total Volume"])
+        d[row["Kuerzel"]] += (float(row["Total Volume"])/1000)
 
     #Daten aus dictonary in richtiges Format bringen
     liste = []
