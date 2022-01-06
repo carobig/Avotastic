@@ -16,7 +16,6 @@ p, ol {font-family: 'Inria Serif', serif; font-size: 14pt; margin: 25px; margin-
 hr {width: 280px; height: 3px; border: 0; margin: 0 auto 40px auto;background: #494949;}
 
 /* HEADER */
-
 header {width: 100%;height: 100px; top: 0; left: 0; background: white; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1); z-index: 1;
 }
 #name {width: 250px; float: left; margin: 15px 0 0 30px;font-family: 'Open Sans', sans-serif;font-weight: 300;text-transform: uppercase;color: #494949;letter-spacing: 0.30em;font-size: 16px;}
@@ -27,20 +26,17 @@ header nav ul li a {font-size: 16px;}
 header nav ul li:hover {opacity: 0,5;}
 
 /* Startseite: HOME */
-
 #home {background-position: center center; background-size: cover; background-attachment: fixed;}
 #home h1 {margin: 310px auto 0 auto;}
 #home img {width: 32px; margin-top: 180px; opacity: 0.9;}
 #home img:hover {opacity: 1;}
 
 /* SUBSECTION: VERKAUF VON AVOCADOS */
-
 #about avocados img {width: 240px;}
 #about avocados p{width: 700px;margin: 0 auto 0 auto;}
 
 
-/* HIGHCHARTS: STATS */
-
+/* HIGHCHARTS (Grafiken der Ansichten) */
 .static-box {width:600px;margin:auto;magrin-top:0px;height:auto;}
 
 #preisentwicklung-chart {height: auto; }
@@ -61,24 +57,23 @@ header nav ul li:hover {opacity: 0,5;}
 .highcharts-data-table tr:hover {background: #f1f7ff;}
 
 /* SUBSECTION: HACKS */
-
 #hacks {background-color: #f0f0f0;}
 
 /* FOOTER */
-
 footer p {color: white; font-size: 14px;padding-bottom: 40px;}
 
 /* TABLETS */
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1024px)
+    {
     header {height: auto;}
     header nav {margin-top: 0;}
     header nav ul li {font-size: 12px;}
-}
+    }
 
 /* MOBILE */
-
-@media screen and (max-width:480px) {
+@media screen and (max-width:480px)
+    {
     header {height: auto;}
-}
+    }
 
 
