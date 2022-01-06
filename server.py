@@ -21,6 +21,7 @@ def index():
 @app. route('/data', methods=['GET'])
 def dataview():
     return jsonify(data)
+    #jsonify wandelt Daten in JSON Daten um
 
 @app. route('/dataperyear', methods=['GET'])
 def dataperyear():

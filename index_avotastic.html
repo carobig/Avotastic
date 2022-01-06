@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+<!-- Mobile Specific Metas -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Lorena Amgwerd, Carole Bigler, Andrea Gretener">
+        <meta name="date" content="2019-01-08T017:00:00">
+        <meta name="description" content="Avotastic">
+        <meta name="keywords" content="Avocado, statistics">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>Avotastic</title>
+        <link rel="stylesheet" href="static/stylesheet.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inria+Serif&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inria+Serif|Open+Sans:600&display=swap" rel="stylesheet">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+        <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+
+    </head>
+    <body>
+        
+<!-- HEADER -->    
+        <header>
+            <div id="name"><a href="#home">Avotastic</a></div>
+            <nav>
+                <ul>
+                <li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#preisentwicklung">Verkauf von Avocados</a></li>
+                    <li><a href="#hacks">Hacks</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<!-- HOME -->         
+        
+    <section id="home">
+        <h2>Hi, Avocado friends!</h2>
+        <div id= Projekterklärung>
+        <p>Im Rahmen des Moduls Webprogrammierung möchte sich das Projektteam mit dem Thema Avocado befassen. Die Avocado ist eine sehr beeindruckende Frucht, gehört zur Beerenfamilie und ist die beliebteste Frucht in Amerika. Die Avocadoindustrie boomt und besonders die Millennials verspeisen diese Frucht in grossen Mengen. Sei es als Avocado Toast, Smoothie oder auf traditioneller Art als Guacamole.</p>
+        <hr>
+        <p>Mit den erwähnten Daten will das Projektteam folgende Visualisierungen erstellen: Preisentwicklung der Avocado’s
+        Region/Stadt des Verkaufs der Avocado
+        Verhältnis der unterschiedlichen Avocadotypen und deren Entwicklung (konventionell/ökologisch)
+        Menge der verkauften Avocados im Verlauf der Zeit</p>
+        <hr>
+        <p>Ziel dabei ist es, dass Nutzer die unterschiedlichen Daten vereinfacht lesen und verstehen können. Je nach Aufwand kann sich das Projektteam gut vorstellen, die Webapplikation mit weiteren Kategorien wie «good to know», «Hacks» und «Rezepte» zu ergänzen.</p>
+        </div>
+        <a href="#preisentwicklung">
+                <img src="../static/img/pfeil.png" alt="pfeil">
+            </a>
+    </section>
+        
+<!-- SUBSECTION: PREISENTWICKLUNG -->
+    <section id="preisentwicklung">
+        <h3>Verkauf von Avocados</h3>
+        <hr>
+            <p>Hier findest du Visualisierungen zum Verkauf von Avocados in den USA. Die Daten zeigen die Veränderung von 2015 bis 2018. Dabei wird zwischen zwei Typen unterschieden: Conventional und Organic. Die Preise sind in US-Dollars angegeben.</p>
+            <table>
+                <tr>
+                    <td> 
+                    <h4 >Preisentwicklung</h4></td>
+                    <td>             
+                        <h4>Verkaufsmenge</h4></td>
+                </tr>
+                <tr>
+                    <td>
+                    <figure class="highcharts-figure">
+                        <div id="preisentwicklung-chart" class="static-box"></div>
+                    </figure>
+                    </td>
+                    <td>
+                    <figure class="highcharts-figure">
+                        <div id="menge" class="static-box"></div>
+                    </figure>
+                    </td>
+                </tr>
+            </table>
+
+<!-- VERKAUF PRO REGION -->
+
+        <h4>Verkauf pro US-Bundesstaat</h4>
+        <p>Hier findest du eine Übersicht aller Bundesstaaten, welche anzeigt welches Volumen in welchem Jahr verkauft wurde.</p>
+        <p>Von welchem Jahr möchtest du die Karte sehen? (wähle eine Jahreszahl aus)</p>
+        <input type="range" id="yearslider" value="2018" name="year" min="2015" max="2018" oninput="this.nextElementSibling.value = this.value">
+        <output id="output">2018</output>
+        <div id="region" class="static-box"></div>
+
+    </section>
+    
+<!-- HACKS --> 
+    <section id="hacks">
+        <h2 style="color: black">Hacks</h2>
+        <hr>
+        <h3 style="color: black">How to pick the right avocado</h3>
+        <p style="color: black">Die Farbe der Avocados sagt nichts über die Reife aus, da es viele verschiedene Sorten gibt. Viele denken, dass man merkt, ob die Avocado reif ist, wenn man die Härte spürt. Doch eigentlich muss man oben an der Avocado den braunen Resten vom Stiel wegnehmen. Wenn dieser von alleine wegkommt, dann ist die Avocado reif. 
+        Trotzdem kaufst du im Laden am besten eher harte Avocados, damit diese zuhause nachreifen können. </p>
+        
+        <h3 style="color: black">How to cut an avocado </h3>
+        <p style="color: black">Zuerst sollte man die Avocado waschen, da sonst beim Schneiden Bakterien in die Avocado gelangen könnten. Herum schneiden und dann die beiden Hälften in gegensätzliche Richtungen ziehen. Danach mit dem Messer in den Kern schneiden und herausdrehen.
+        Dann kannst du in der Schale ein Gittermuster reinschneiden und mit dem Löffel herausnehmen. Oder direkt mit dem Löffel herumgehen, damit sie in Streifen geschnitten werden können.
+        </p>
+        
+        <h3 style="color: black">How to store an avocado </h3>
+        <p style="color: black">Wie bereits erwähnt sollten Avocados zuerst zuhause nachreifen, bevor aus ihr beispielsweise eine leckere Guacamole entstehen kann. Deshalb sollten Avocado zusammen mit einem Apfel in einer Papiertüte bei Zimmertemperatur aufbewahrt werden. Der Apfel gibt das Reifegas Ethylen ab, welches den Reifeprozess der Avocado beschleunigt.
+        </p>
+        
+        <h3 style="color: black">What to do when the avocado is not ready</h3>
+        <p style="color: black">Wenn du wieder einmal eine steinharte Avocado gekauft hast, sie aber unbedingt jetzt sofort essen möchtest, gibt’s einen kleinen aber einfachen Trick: Avocado mit Alufolie umwickeln und bei 90 Grad für zehn Minuten im Ofen backen. Schon ist die Avocado reif!<br>
+        Und keine Sorge, in der kurzen Zeit wird sie auch nicht zu heiss, um zu essen.
+        </p>
+        
+        <h3 style="color: black">What to do with the other half</h3>
+        <p style="color: black">Wenn du nur eine halbe Avocado brauchst und nicht möchtest, dass die andere Hälfte beim Aufbewahren braun wird gibt es einen Trick, um diese aufzubewahren. Lege die Avocado-Hälfte einfach in ein Tupperware mit einem Zwiebelstück und bewahre sie im Kühlschrank auf. Am besten lässt du den Kern drin. Die Schwefelverbindungen der Zwiebel (das sind die, die uns sonst immer zum Weinen bringen) halten die Avocado mehrere Tage lang frisch und verhindern, dass sie braun wird. Was auch gut funktioniert: Olivenöl oder Zitronensaft über die Frucht streichen, mit Frischhaltefolie umwickeln und ebenfalls im Kühlschrank aufbewahren. Die Avocados bleibt dann ungefähr noch drei Tage reif.
+        </p>
+        
+        <h3 style="color: black">How to grow your own avocado plant</h3>
+        <p style="color: black">
+        Um den Avocadokern nicht einfach wegzuwerfen, kannst du ihn anpflanzen. Hier eine kleine Anleitung dazu:</p>
+        <ol style="color: black">
+            <li>Stecke drei Zahnstocher mittig in den Avocadokern. Aber vorsichtig: Nicht zu tief   stechen, sonst beschädigst du den Kern. </li>
+            <li>Nun füllst du ein Glas mit Wasser und setzt den Kern so darauf, dass die Zahnstocher am Glasrand aufliegen. Der Kern sollte etwa bis zur Hälfte im Wasser liegen und die spitzere Seite nach oben schauen.</li>
+            <li>Das Glas sollte an einem sonnigen Platz in der Wohnung stehen. Außerdem musst du regelmäßig Wasser nachgießen, sodass der Kern immer bis zur Hälfte mit Wasser bedeckt ist.</li>
+            <li>Nach einigen Wochen wird der Avocadokern Keime entwickeln. Jetzt kannst du den Kern in einen Topf mit Erde umpflanzen.</li>
+            </ol>
+            <img src="../static/img/avocado_plant.jpeg" alt="avo-plant">
+    </section>
+    
+<!-- FOOTER -->         
+    <footer>
+        <p>
+        &copy; Avotastic 2021 | Amgwerd Lorena, Bigler Carole &amp; Gretener Andrea | DBM19VZ
+        </p>
+    </footer>
+
+    <script src="static/main.js"></script>
+
+    </body>
+</html>
