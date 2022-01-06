@@ -1,4 +1,4 @@
-/*  Quelle IMG Background: https://unsplash.com/photos/4L0KvF123mM */
+/*  Quelle IMG-Background: https://unsplash.com/photos/4L0KvF123mM */
 html, body {margin: 0;padding: 0;height: 100%;text-align: center; background-image: url(img/avo-background.jpg); background-color: #cccccc;}
 section {min-height: 100%;}
 a {text-decoration: none;}
@@ -26,20 +26,20 @@ header nav ul li {float:left; margin-left: 20px; margin-bottom: 10px;}
 header nav ul li a {font-size: 16px;}
 header nav ul li:hover {opacity: 0,5;}
 
-/* HOME */
+/* Startseite: HOME */
 
 #home {background-position: center center; background-size: cover; background-attachment: fixed;}
 #home h1 {margin: 310px auto 0 auto;}
 #home img {width: 32px; margin-top: 180px; opacity: 0.9;}
 #home img:hover {opacity: 1;}
 
-/* ABOUT AVOCADOS */
+/* SUBSECTION: VERKAUF VON AVOCADOS */
 
 #about avocados img {width: 240px;}
 #about avocados p{width: 700px;margin: 0 auto 0 auto;}
 
 
-/* STATS */
+/* HIGHCHARTS: STATS */
 
 .static-box {width:600px;margin:auto;magrin-top:0px;height:auto;}
 
@@ -60,24 +60,9 @@ header nav ul li:hover {opacity: 0,5;}
 .highcharts-data-table thead tr,.highcharts-data-table tr:nth-child(even) {background: #f8f8f8;}
 .highcharts-data-table tr:hover {background: #f1f7ff;}
 
-/* HACKS */
+/* SUBSECTION: HACKS */
 
 #hacks {background-color: #f0f0f0;}
-
-/* CONTACT */
-
-form input, textarea {font-family: 'Inria Serif', serif; font-size: 12pt; margin-bottom: 10px; border-radius: 2px; border: 2px solid; border-color: #494949;outline: none;}
-
-form input:first-child {margin-top: 10px;}
-
-form input {width: 552px; height: 30px;}
-
-form textarea {width: 550px; height: 200px; resize: none;}
-
-.input_text {color: #494949; padding-left: 10px;}
-
-.button {background-color: #f0f0f0; color: #494949; width: 566px; height: 40px;}
-.button:hover {background-color: #494949; color: #f0f0f0;}
 
 /* FOOTER */
 
