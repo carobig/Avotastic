@@ -15,7 +15,7 @@ p, ol {font-family: 'Inria Serif', serif; font-size: 14pt; margin: 25px; margin-
 
 hr {width: 280px; height: 3px; border: 0; margin: 0 auto 40px auto;background: #494949;}
 
-/*HEADER***********************************/
+/* HEADER */
 
 header {width: 100%;height: 100px; top: 0; left: 0; background: white; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1); z-index: 1;
 }
@@ -26,26 +26,29 @@ header nav ul li {float:left; margin-left: 20px; margin-bottom: 10px;}
 header nav ul li a {font-size: 16px;}
 header nav ul li:hover {opacity: 0,5;}
 
-/*HOME***********************************/
+/* HOME */
 
 #home {background-position: center center; background-size: cover; background-attachment: fixed;}
 #home h1 {margin: 310px auto 0 auto;}
 #home img {width: 32px; margin-top: 180px; opacity: 0.9;}
 #home img:hover {opacity: 1;}
 
-/*ABOUT AVOCADOS***********************************/
+/* ABOUT AVOCADOS */
 
 #about avocados img {width: 240px;}
 #about avocados p{width: 700px;margin: 0 auto 0 auto;}
 
 
-/*Stats***********************************/
+/* STATS */
 
 .static-box {width:600px;margin:auto;magrin-top:0px;height:auto;}
 
-#preisentwicklung-chart {height: auto;}
+#preisentwicklung-chart {height: auto; }
+#preisentwicklung {margin-left: auto; margin-right:auto; color: whitesmoke;}
 
 #region {height: 500px;margin: 0 auto; width:80%;}
+#yearslider {width:20%;margin-bottom:40px;}
+#output {color:white; margin-left: 20px; font-size: 16px;}
 .loading {margin-top: 10em;text-align: center;color: gray;}
 
 #menge {height: auto;}
@@ -56,11 +59,12 @@ header nav ul li:hover {opacity: 0,5;}
 .highcharts-data-table td,.highcharts-data-table th,.highcharts-data-table caption {padding: 0.5em;}
 .highcharts-data-table thead tr,.highcharts-data-table tr:nth-child(even) {background: #f8f8f8;}
 .highcharts-data-table tr:hover {background: #f1f7ff;}
-/*Hacks***********************************/
+
+/* HACKS */
 
 #hacks {background-color: #f0f0f0;}
 
-/*CONTACT***********************************/
+/* CONTACT */
 
 form input, textarea {font-family: 'Inria Serif', serif; font-size: 12pt; margin-bottom: 10px; border-radius: 2px; border: 2px solid; border-color: #494949;outline: none;}
 
@@ -75,18 +79,18 @@ form textarea {width: 550px; height: 200px; resize: none;}
 .button {background-color: #f0f0f0; color: #494949; width: 566px; height: 40px;}
 .button:hover {background-color: #494949; color: #f0f0f0;}
 
-/*FOOTER***********************************/
+/* FOOTER */
 
 footer p {color: white; font-size: 14px;padding-bottom: 40px;}
 
-/*TABLETS***********************************/
+/* TABLETS */
 @media screen and (max-width:1024px) {
     header {height: auto;}
     header nav {margin-top: 0;}
     header nav ul li {font-size: 12px;}
 }
 
-/*MOBILE***********************************/
+/* MOBILE */
 
 @media screen and (max-width:480px) {
     header {height: auto;}

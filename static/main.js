@@ -4,6 +4,7 @@
 // BERECHNUNG
 
 $.get("data", function (result) {
+    // Daten in main.js laden
   const getAllPrices = (year, type) =>
     result
       .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
@@ -19,6 +20,7 @@ $.get("data", function (result) {
   const PRconventional18 = (getAllPrices(2018, "conventional"))/636;
   const PRorganic18 = (getAllPrices(2018, "organic"))/636;
 
+// STATS
   Highcharts.chart('preisentwicklung-chart', {
 
     title: {
@@ -77,7 +79,7 @@ $.get("data", function (result) {
     }
 
   });
-});
+}); 
 
 
 // VERKAUFSMENGE
@@ -85,12 +87,17 @@ $.get("data", function (result) {
 //Berechnungen
 
 $.get("data", function (result) {
+    // Daten in main.js laden
   const getAllVolumes = (year, type) =>
     result
       .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
+        // liest ein String-Argument ein und gibt eine ganze Zahl zurück, filtert ungewollte Teile
       .map((e) => e["Total Volume"])
+        // wandelt gewünschte Teile in gleichen Typ um
       .reduce((sum, newValue) => sum + parseInt(newValue), 0);
+        // Wert wird als erstes Argument für den ersten Aufruf des Callbacks verwendet
 
+// Zuordnung von read-only Referenz auf einen Wert mit const
   const conventional15 = getAllVolumes(2015, "conventional");
   const organic15 = getAllVolumes(2015, "organic");
   const conventional16 = getAllVolumes(2016, "conventional");
