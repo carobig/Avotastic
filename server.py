@@ -25,7 +25,7 @@ def index():
 def dataview():
     return jsonify(data)
 
-# xx.
+# Kommentar ergänzen. ***
 @app. route('/dataperyear', methods=['GET'])
 def dataperyear():
     # Jahr aus dem Request holen.
