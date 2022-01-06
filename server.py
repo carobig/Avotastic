@@ -47,7 +47,7 @@ def dataperyear():
         # Der Wert und Code wird der Liste angehängt.
         liste.append({"value":value, "code":code})
 
-    # Daten werden als Liste versendet.
+    # Funktion jsonify wandelt Daten in JSON Daten um und gibt sie als Liste zurück.
     return jsonify(liste)
 
 if __name__ == '__main__':
