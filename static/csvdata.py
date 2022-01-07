@@ -2,7 +2,7 @@
 import csv
 
 # Benennung der CSV-Datei.
-filename = '../data/Avocado_v5.csv'
+filename = '../data/Avocado_v6.csv'
 
 # Daten werden als read-only geöffnet.
 with open(filename, 'r') as csvfile:

@@ -22,7 +22,7 @@ app = Flask(__name__)
 def index():
     return render_template('index_avotastic.html')
 
-# Funktion jsonify wandelt Daten in JSON-Daten um.
+# Funktion jsonify wandelt Daten in JSON-Daten um, Route besteht um Korrektes Datenauslesen zu überprüfen
 @app. route('/data', methods=['GET'])
 def dataview():
     return jsonify(data)
@@ -36,14 +36,14 @@ def dataperyear():
     # Alle Zeilen für das Jahr werden geholt.
     filtereddata = [row for row in data if row["year"] == year]
 
-    # Hier wird ein Dictionary erzeugt und das Volumen für jeden Bundesstaat berechnet.
+    # Hier wird ein Dictionary erzeugt und das Volumen für jeden Bundesstaat berechnet. Der Wert ist 0.
     d = defaultdict(lambda: 0)
     for row in filtereddata:
         # Kuerzel steht für Abkürzung des Bundesstaates. Diesen wird jeweils das Volumen der verkaufen Avocados zugeordnet.
-        # Volumen wird durch 1000 geteilt, damit die Kommastellen der Zahl sich verkleinern.
+        # Volumen wird durch 1000 geteilt, damit die Kommastellen der Zahl sich verkleinern für mehr Übersichtlichkeit.
         d[row["Kuerzel"]] += (float(row["Total Volume"])/1000)
 
-    # Hier wird die Liste erstellt.
+    # Hier wird die Liste erstellt, die im main.js in den Graphen geladen werden kann.
     liste = []
     for code, value in d.items():
         # Der Wert und Code wird der Liste angehängt.

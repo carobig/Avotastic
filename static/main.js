@@ -1,17 +1,19 @@
 // Hier werden alle Funktionen für die verschiedenen Ansichten definiert.
 
-// Funktionen für Ansicht 1: Preisentwicklung
+// Funktionen für Ansicht 1: Preisentwicklung, Funktionsname: Result.
 $.get("data", function (result) {
-  // Daten (Jahr und Typ) werden in main.js geladen.
+  // der Ablauf der Funktion wird in eine Variabel mittels Const gespeichert.
   const getAllPrices = (year, type) =>
+    // Funktion durchläuft die einzelnen Strings des Datensatz.
     result
-      // Liest ein String-Argument ein und gibt eine ganze Zahl zurück und filtert ungewollte Teile.
+      // Durchsucht den String ob die mitgegeben Werte beim Datensatz stimmen.
       .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
-      // Wandelt gewünschte Teile in gleichen Typ um.
+      // wenn ja, wählt sie den gwünschten Wert des Datensatz aus.
       .map((e) => parseFloat(e["AveragePrice"]))
-      // Wert wird als erstes Argument für den ersten Aufruf des Callbacks verwendet.
+      // Wert wird zur Summe der bisherigen Zeilen hinzugerechnet.
       .reduce((sum, newValue, e) => sum + parseFloat(newValue), 0)
-  // Zuordnung von read-only Referenz auf einen Wert mit const.
+
+  // Für jedes Jahr und Typ wird der entsprechende Wert aus dem Datensatz berechnet. Zudem wird durch die Anzahl datensätze gerechnet um Durchschnitt zu erhalten.
   const PRconventional15 = (getAllPrices(2015, "conventional"))/2756;
   const PRorganic15 = (getAllPrices(2015, "organic"))/2755;
   const PRconventional16 = (getAllPrices(2016, "conventional"))/2756;
@@ -62,7 +64,7 @@ $.get("data", function (result) {
             pointStart: 2015
         }
     },
-    // Zugriff auf Avocado-Typ: Conventional oder Organic.
+    // Daten werden hier nach Typ eingegeben.
     series: [
     {
         name: 'Convetional',
@@ -92,19 +94,20 @@ $.get("data", function (result) {
 }); 
 
 
-// Funktionen für Ansicht 2: Verkaufsmenge
-// Daten Jahr und Typ werden in main.js geladen.
+// Funktionen für Ansicht 2: Verkaufsmenge, Funktionsname: Result.
 $.get("data", function (result) {
+  // der Ablauf der Funktion wird in eine Variabel mittels Const gespeichert.
   const getAllVolumes = (year, type) =>
+    // Funktion durchläuft die einzelnen Strings des Datensatz.
     result
-      // Liest ein String-Argument ein und gibt eine ganze Zahl zurück und filtert ungewollte Teile.
+      // Durchsucht den String ob die mitgegeben Werte beim Datensatz stimmen.
       .filter((e) => parseInt(e.year) === parseInt(year) && e.type === type)
-      // Wandelt gewünschte Teile in gleichen Typ um.
+      // wenn ja, wählt sie den gwünschten Wert des Datensatz aus.
       .map((e) => e["Total Volume"])
-      // Wert wird als erstes Argument für den ersten Aufruf des Callbacks verwendet.
+      // Wert wird zur Summe der bisherigen Zeilen hinzugerechnet.
       .reduce((sum, newValue) => sum + parseInt(newValue), 0);
 
-  // Zuordnung von read-only Referenz auf einen Wert mit const.
+  // Für jedes Jahr und Typ wird der entsprechende Wert aus dem Datensatz berechnet.
   const conventional15 = getAllVolumes(2015, "conventional");
   const organic15 = getAllVolumes(2015, "organic");
   const conventional16 = getAllVolumes(2016, "conventional");
@@ -176,7 +179,7 @@ $.get("data", function (result) {
             }
         }
     },
-    // Hier wird der Avocado-Typ mit den dazugehörigen Daten definiert.
+    // Hier werden die Daten eingelesen.
     series: [
     {
         name: 'Conventional',

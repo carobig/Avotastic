@@ -163,6 +163,11 @@ header nav ul li: hover
     margin: 0 auto 0 auto;
     }
 
+#tabelle1 {
+    margin-left:auto;
+    margin-right:auto;
+}
+
 /* HIGHCHARTS (Grafiken der Ansichten) */
 .static-box
     {
