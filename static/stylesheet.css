@@ -163,9 +163,9 @@ header nav ul li: hover
     margin: 0 auto 0 auto;
     }
 
-#tabelle1 {
-    margin-left:auto;
-    margin-right:auto;
+.tabelle {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* HIGHCHARTS (Grafiken der Ansichten) */
