@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
+
 <!-- Mobile Specific Metas -->
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Lorena Amgwerd, Carole Bigler, Andrea Gretener">
@@ -11,8 +12,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>Avotastic</title>
         <link rel="stylesheet" href="static/stylesheet.css" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Inria+Serif&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Inria+Serif|Open+Sans:600&display=swap" rel="stylesheet">
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/maps/modules/map.js"></script>
         <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
@@ -38,25 +37,25 @@
     <section id="home">
         <h2>Hi, Avocado friends!</h2>
         <div id= Projekterklärung>
-        <p>Im Rahmen des Moduls Webprogrammierung möchte sich das Projektteam mit dem Thema Avocado befassen. Die Avocado ist eine sehr beeindruckende Frucht, gehört zur Beerenfamilie und ist die beliebteste Frucht in Amerika. Die Avocadoindustrie boomt und besonders die Millennials verspeisen diese Frucht in grossen Mengen. Sei es als Avocado Toast, Smoothie oder auf traditioneller Art als Guacamole.</p>
+        <p>Im Rahmen des Moduls Webprogrammierung möchte sich das Projektteam mit der Entwicklung von Avocados befassen. Die Avocado ist eine sehr beeindruckende Frucht, gehört zur Beerenfamilie und ist die beliebteste Frucht in Amerika. Die Avocadoindustrie boomt und besonders die Millennials verspeisen diese Frucht in grossen Mengen. Sei es als Avocado Toast, Smoothie oder auf traditioneller Art als Guacamole.
+        </p>
         <hr>
-        <p>Mit den erwähnten Daten will das Projektteam folgende Visualisierungen erstellen: Preisentwicklung der Avocado’s
-        Region/Stadt des Verkaufs der Avocado
-        Verhältnis der unterschiedlichen Avocadotypen und deren Entwicklung (konventionell/ökologisch)
-        Menge der verkauften Avocados im Verlauf der Zeit</p>
-        <hr>
-        <p>Ziel dabei ist es, dass Nutzer die unterschiedlichen Daten vereinfacht lesen und verstehen können. Je nach Aufwand kann sich das Projektteam gut vorstellen, die Webapplikation mit weiteren Kategorien wie «good to know», «Hacks» und «Rezepte» zu ergänzen.</p>
+        <p>Das Projektteam möchte folgende Visualisierungen erstellen: Preisentwicklung und Mengenveränderung der Avocados. Zudem wird auch eine Länderkarte gezeigt, welche anzeigt, in welchem US-Bundesstaat wie viel Avocados konsumiert werden.<br>
+        Die Daten stammen aus den USA und wurden von 2015 bis 2018 erfasst.
+        </p>
         </div>
+        <!-- Verlinkung zur nächsten Seite: Preisentwicklung. -->
         <a href="#preisentwicklung">
-                <img src="../static/img/pfeil.png" alt="pfeil">
-            </a>
+            <img src="../static/img/pfeil.png" alt="pfeil">
+        </a>
     </section>
         
 <!-- SUBSECTION: Verkauf von Avocados -->
     <section id="preisentwicklung">
         <h3>Verkauf von Avocados</h3>
         <hr>
-            <p>Hier findest du Visualisierungen zum Verkauf von Avocados in den USA. Die Daten zeigen die Veränderungen von 2015 bis 2018. Dabei wird zwischen zwei Typen unterschieden: Conventional und Organic. Die Preise sind in US-Dollars angegeben.</p>
+            <p>Hier findest du Visualisierungen zum Verkauf von Avocados in den USA. Die Daten zeigen die Veränderungen von 2015 bis 2018. Dabei wird zwischen zwei Typen unterschieden: Conventional und Organic. Die Preise sind in US-Dollars angegeben.
+            </p>
             <!-- Ansicht 1 + 2: Preisentwicklung und Verkaufsmenge werden als Tabelle eingefügt. -->
             <table>
                 <tr>
@@ -85,7 +84,7 @@
             <p>Hier findest du eine Übersicht aller Bundesstaaten, welche anzeigt welches Volumen in welchem Jahr verkauft wurde.</p>
             <!-- Hier wird ein Slider für die Auswahl der Jahre eingefügt. -->
             <p>Von welchem Jahr möchtest du die Karte sehen? (wähle eine Jahreszahl aus)</p>
-            <!-- Die Zeitspanne für den Slider geht von 2015 bis 2018. -->
+            <!-- Die Zeitspanne für den Slider ist von 2015 bis 2018. -->
             <input type="range" id="yearslider" value="2018" name="year" min="2015" max="2018" oninput="this.nextElementSibling.value = this.value">
             <!-- Wenn kein Jahr ausgewählt wird, zeigt es die Daten von 2018 an. -->
             <output id="output">2018</output>
@@ -99,8 +98,8 @@
         <hr>
         <h3 style="color: black">How to pick the right avocado</h3>
             <p style="color: black">
-            Die Farbe der Avocados sagt nichts über die Reife aus, da es viele verschiedene Sorten gibt. Viele denken, dass man merkt, ob die Avocado reif ist, wenn man die Härte spürt. Doch eigentlich muss man oben an der Avocado den braunen Resten vom Stiel wegnehmen. Wenn dieser von alleine wegkommt, dann ist die Avocado reif.
-            Trotzdem kaufst du im Laden am besten eher harte Avocados, damit diese zuhause nachreifen können.
+                Die Farbe der Avocados sagt nichts über die Reife aus, da es viele verschiedene Sorten gibt. Viele denken, dass man merkt, ob die Avocado reif ist, wenn man die Härte spürt. Doch eigentlich muss man oben an der Avocado den braunen Resten vom Stiel wegnehmen. Wenn dieser von alleine wegkommt, dann ist die Avocado reif.
+                Trotzdem kaufst du im Laden am besten eher harte Avocados, damit diese zuhause nachreifen können.
             </p>
         <h3 style="color: black">How to cut an avocado </h3>
             <p style="color: black">

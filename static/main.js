@@ -1,8 +1,6 @@
-// Hier sind alle Funktionen für die verschiedenen Ansichten.
+// Hier werden alle Funktionen für die verschiedenen Ansichten definiert.
 
 // Funktionen für Ansicht 1: Preisentwicklung
-
-// Hier werden die Daten berechnet.
 $.get("data", function (result) {
   // Daten (Jahr und Typ) werden in main.js geladen.
   const getAllPrices = (year, type) =>
@@ -12,7 +10,7 @@ $.get("data", function (result) {
       // Wandelt gewünschte Teile in gleichen Typ um.
       .map((e) => parseFloat(e["AveragePrice"]))
       // Wert wird als erstes Argument für den ersten Aufruf des Callbacks verwendet.
-      .reduce((sum, newValue, e) => sum + parseFloat(newValue), 0)//.then();
+      .reduce((sum, newValue, e) => sum + parseFloat(newValue), 0)
   // Zuordnung von read-only Referenz auf einen Wert mit const.
   const PRconventional15 = (getAllPrices(2015, "conventional"))/2756;
   const PRorganic15 = (getAllPrices(2015, "organic"))/2755;
@@ -26,30 +24,37 @@ $.get("data", function (result) {
 // Definition des Highcharts-Templates für Grafik.
   Highcharts.chart('preisentwicklung-chart', {
 
-    title: {
+    // Titel = Grafik ohne Titel
+    title:
+    {
         text: ' '
     },
     // Y-Achse = Durchschnittlicher Verkaufspreis
-    yAxis: {
+    yAxis:
+    {
         title: {
             text: 'Durchschn. Verkaufspreis'
         }
     },
     // X-Achse = Zeitspanne von 2015 bis 2018
-    xAxis: {
+    xAxis:
+    {
         accessibility: {
             rangeDescription: 'Range: 2015 to 2018',
             categories: ['2015', '2016', '2017', '2018']
         }
     },
 
-    legend: {
+    // Definition der Legende der Grafik.
+    legend:
+    {
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'middle'
     },
-    // Kommentar ergänzen.****
-    plotOptions: {
+    // Die erste Jahreszahl der Legende lautet: 2015.
+    plotOptions:
+    {
         series: {
             label: {
                 connectorAllowed: false
@@ -57,15 +62,17 @@ $.get("data", function (result) {
             pointStart: 2015
         }
     },
-    // Hier werden die Daten (Avocado-Typ) geholt.
-    series: [{
+    // Zugriff auf Avocado-Typ: Conventional oder Organic.
+    series: [
+    {
         name: 'Convetional',
         data: [PRconventional15, PRconventional16, PRconventional17, PRconventional18]
-    }, {
+    },
+    {
         name: 'Organic',
         data: [PRorganic15, PRorganic16, PRorganic17, PRorganic18]
     }],
-
+    // Responsive Design wird definiert.
     responsive: {
         rules: [{
             condition: {
@@ -86,10 +93,7 @@ $.get("data", function (result) {
 
 
 // Funktionen für Ansicht 2: Verkaufsmenge
-
-// Hier werden die Daten berechnet.
-
-// Daten werden in main.js geladen.
+// Daten Jahr und Typ werden in main.js geladen.
 $.get("data", function (result) {
   const getAllVolumes = (year, type) =>
     result
@@ -100,7 +104,7 @@ $.get("data", function (result) {
       // Wert wird als erstes Argument für den ersten Aufruf des Callbacks verwendet.
       .reduce((sum, newValue) => sum + parseInt(newValue), 0);
 
-// Zuordnung von read-only Referenz auf einen Wert mit const.
+  // Zuordnung von read-only Referenz auf einen Wert mit const.
   const conventional15 = getAllVolumes(2015, "conventional");
   const organic15 = getAllVolumes(2015, "organic");
   const conventional16 = getAllVolumes(2016, "conventional");
@@ -111,35 +115,43 @@ $.get("data", function (result) {
   const organic18 = getAllVolumes(2018, "organic");
 
   // Definition des Highcharts-Templates für Grafik.
-  Highcharts.chart('menge', {
-    chart: {
+  Highcharts.chart('menge',
+    {
+    chart:
+    {
         type: 'column'
     },
-    title: {
+    // Titel = Grafik ohne Titel
+    title:
+    {
         text: ' '
     },
     // X-Achse = Jahreszahlen von 2015 bis 2018
-    xAxis: {
+    xAxis:
+    {
         categories: ['2015', '2016', '2017', '2018']
     },
     // Y-Achse = Totale Menge verkaufter Avocados
-    yAxis: {
+    yAxis:
+    {
         min: 0,
-        title: {
+        title:
+        {
             text: 'Totale Menge verkaufter Avocados'
         },
         stackLabels: {
             enabled: true,
             style: {
                 fontWeight: 'bold',
-                color: ( // theme
+                color: (
                     Highcharts.defaultOptions.title.style &&
                     Highcharts.defaultOptions.title.style.color
                 ) || 'gray'
             }
         }
     },
-    legend: {
+    legend:
+    {
         align: 'right',
         x: -30,
         verticalAlign: 'top',
@@ -150,11 +162,13 @@ $.get("data", function (result) {
         borderWidth: 1,
         shadow: false
     },
-    tooltip: {
+    tooltip:
+    {
         headerFormat: '<b>{point.x}</b><br/>',
         pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
     },
-    plotOptions: {
+    plotOptions:
+    {
         column: {
             stacking: 'normal',
             dataLabels: {
@@ -162,8 +176,9 @@ $.get("data", function (result) {
             }
         }
     },
-    // Hier werden die Daten (Avocado-Typ) geholt.
-    series: [{
+    // Hier wird der Avocado-Typ mit den dazugehörigen Daten definiert.
+    series: [
+    {
         name: 'Conventional',
         data: [conventional15, conventional16, conventional17, conventional18]
     }, {
@@ -176,32 +191,36 @@ $.get("data", function (result) {
 
 
 // Funktionen für Ansicht 3: Verkauf pro US-Bundesstaat
-
 // Eventhandler für Slider.
 $("#yearslider").on("change", function(){
     // Jahreszahl von Slider wird geholt.
     let year = $(this).val()
-
     // Daten werden für ein bestimmtes Jahr geholt und werden in result geladen.
-    $.get("dataperyear?year=" + year, function(result){
+    $.get("dataperyear?year=" + year, function(result)
+    {
         // Mit den Daten wird die Länderkarte dargestellt.
-        Highcharts.mapChart('region', {
-
-            chart: {
+        Highcharts.mapChart('region',
+        {
+            chart:
+            {
                 map: 'countries/us/us-all',
                 borderWidth: 1
             },
-            title: {
+            title:
+            {
                 text: 'Menge der verkauften Avocados (in Tausend)'
             },
-            exporting: {
+            exporting:
+            {
                 sourceWidth: 600,
                 sourceHeight: 500
             },
-            mapNavigation: {
+            mapNavigation:
+            {
                 enabled: true
             },
-            colorAxis: {
+            colorAxis:
+            {
                 min: 1000,
                 type: 'logarithmic',
                 minColor: '#edfded',

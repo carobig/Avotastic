@@ -1,13 +1,15 @@
+# Import von Flask.
 from flask import Flask, jsonify, render_template, request
 from collections import defaultdict
+# Import CSV-Datei mit Daten.
 import csv
 
-# SERVER: Zugriff auf Daten von Avocados.
+# Benennung der CSV-Datei.
 filename = 'data/Avocado_v6.csv'
 
 # Daten der Avocados werden eingelesen.
 with open(filename, 'r') as csvfile:
-    # Daten aus 'data/Avocado_v6.csv' werden in ein Dictionary konvertiert und Datenfelder werden durch ';' getrennt,
+    # Daten aus 'data/Avocado_v6.csv' werden in ein Dictionary konvertiert und einzelne Datenfelder werden durch ';' getrennt,
     datareader = csv.DictReader(csvfile, delimiter=';')
     # Daten werden als Liste abgespeichert.
     data = list(datareader)
@@ -15,23 +17,23 @@ with open(filename, 'r') as csvfile:
 
 app = Flask(__name__)
 
-# HTML wird in server.py eingelesen.
+# Funktionen der Startseite.
 @app. route('/', methods=['GET'])
 def index():
     return render_template('index_avotastic.html')
 
-# Funktion jsonify wandelt Daten in JSON Daten um.
+# Funktion jsonify wandelt Daten in JSON-Daten um.
 @app. route('/data', methods=['GET'])
 def dataview():
     return jsonify(data)
 
-# Kommentar ergänzen. ***
+# Funktionen für das Volumen der Daten für ein Jahr.
 @app. route('/dataperyear', methods=['GET'])
 def dataperyear():
-    # Jahr aus dem Request holen.
+    # Hier wird das Jahr aus dem Request geholt.
     year = request.args.get("year")
 
-    # Alle Zeilen für das Jahr holen.
+    # Alle Zeilen für das Jahr werden geholt.
     filtereddata = [row for row in data if row["year"] == year]
 
     # Hier wird ein Dictionary erzeugt und das Volumen für jeden Bundesstaat berechnet.
@@ -41,13 +43,13 @@ def dataperyear():
         # Volumen wird durch 1000 geteilt, damit die Kommastellen der Zahl sich verkleinern.
         d[row["Kuerzel"]] += (float(row["Total Volume"])/1000)
 
-    # Daten aus Dictionary werden in richtiges Format umgewandelt.
+    # Hier wird die Liste erstellt.
     liste = []
     for code, value in d.items():
         # Der Wert und Code wird der Liste angehängt.
         liste.append({"value":value, "code":code})
 
-    # Funktion jsonify wandelt Daten in JSON Daten um und gibt sie als Liste zurück.
+    # Funktion jsonify wandelt Daten in JSON-Daten um und gibt sie wieder als Liste zurück.
     return jsonify(liste)
 
 if __name__ == '__main__':
