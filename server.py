@@ -22,7 +22,7 @@ app = Flask(__name__)
 def index():
     return render_template('index_avotastic.html')
 
-# Funktion jsonify wandelt Daten in JSON-Daten um, Route besteht um korrektes Datenauslesen zu überprüfen.
+# Funktion jsonify wandelt Daten in JSON-Daten um. Route besteht um korrektes Datenauslesen zu überprüfen.
 @app. route('/data', methods=['GET'])
 def dataview():
     return jsonify(data)
