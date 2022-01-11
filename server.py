@@ -9,7 +9,7 @@ filename = 'data/Avocado_v6.csv'
 
 # Daten der Avocados werden eingelesen.
 with open(filename, 'r') as csvfile:
-    # Daten aus 'data/Avocado_v6.csv' werden in ein Dictionary konvertiert und einzelne Datenfelder werden durch ';' getrennt,
+    # Daten aus 'data/Avocado_v6.csv' werden in ein Dictionary konvertiert und einzelne Datenfelder werden durch ';' getrennt.
     datareader = csv.DictReader(csvfile, delimiter=';')
     # Daten werden als Liste abgespeichert.
     data = list(datareader)
@@ -22,7 +22,7 @@ app = Flask(__name__)
 def index():
     return render_template('index_avotastic.html')
 
-# Funktion jsonify wandelt Daten in JSON-Daten um, Route besteht um Korrektes Datenauslesen zu überprüfen
+# Funktion jsonify wandelt Daten in JSON-Daten um, Route besteht um korrektes Datenauslesen zu überprüfen.
 @app. route('/data', methods=['GET'])
 def dataview():
     return jsonify(data)
